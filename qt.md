@@ -2,11 +2,11 @@
 ## Intro
 blablabla
 ## Gevolgde stappen
-### 1 - Virtual Machine Linux aanmaken
+### 1. - Virtual Machine Linux aanmaken
 
 Maak een nieuwe VM aan, met 6144MB memory kom je normaal toe.
 
-### 2 - MXE requirements en Download
+### 2. - MXE requirements en Download
 Volg de stappen van deze tutorial (https://mxe.cc/#tutorial ) om MXE correct te installeren op de VM.
 
 #### 2.1 Requirements
@@ -55,7 +55,7 @@ Download de huidige versie van MXE via github.
 
 De stap 'System Wide Installation' van de tutorial slaan we over, aangezien we MXE in onze home directory willen installeren.
 
-### 3 Build MXE
+### 3. Build MXE
 Nu we MXE gedownload hebben, gaan we deze builden. Geef volgend commando in. Het uitvoeren van dit commando kan een tijdje duren, bij mij heeft het een 40tal minutjes geduurd.
 > make cc
 
@@ -67,13 +67,16 @@ Nu we MXE gedownload hebben, gaan we deze builden. Geef volgend commando in. Het
     Betekenis:
     Oplossing: 
 
+Daarna voer je het volgende commando uit, ook dit commando nam een kwartiertje in beslag.
+> make qtbase
 
-### 4 Environment Variable aanpassen
+
+### 4. Environment Variable aanpassen
 Verander de PATH variabele zodat Linux weet waar MXE geïnstalleerd is.
 > export PATH=/home/caroline/mxe/usr/bin:$PATH
 
 
-### 5 Cross Compileren (QT)
+### 5. Cross Compileren (QT)
 In deze stap van de tutorial gaan we de compilatie uitvoeren. Zorg ervoor dat bij je VM settings 'shared clipboard' en 'drag n drop' op bidirectional staan, zodat je makkelijk bestanden vanuit je Windows PC naar je Linux machine kan kopiëren. 
 
 ![settings](/img/settings.png)
@@ -93,7 +96,7 @@ Ga naar de map waar je testcase instaat, en voer het make commando uit
 De compilatie is nu voltooid!
 
 
-### 6 Shared folder aanmaken
+### 6. Shared folder aanmaken
 We maken nu een gedeelde map aan, zodat we vanuit onze Windows PC onze applicatie kunnen raadplegen.
 
 Pas eerst je settings van je VM aan. Klik bovenaan op Devices -> Insert Guest Additions CD Image -> Run.
@@ -123,7 +126,7 @@ De shared folder is nu aangemaakt, dit kan je ook zien bij de instellingen van j
 
 
 
-### 7 Run je programma op Windows
+### 7. Run je programma op Windows
 Ga op je Windows PC naar de locatie waar je de gedeelde map hebt aangemaakt. Nu zie je dat de inhoud van de map overeenkomt met de inhoud van de Linux map. Klik op 
 * app (naam van de map)
 * QtTimeTimer (naam van de applicatie)
