@@ -5,4 +5,6 @@
 
 security, performantie, ontwikkeltijd, hardware, toegankelijkheid
 
-QT: ontwikkeltijd: VM opzetten en requirements downloaden = +- 2uur 
+QT: ontwikkeltijd: 
+* VM opzetten en XME klaarzetten: +- 3u
+* compileren zelf: 10min 

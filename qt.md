@@ -49,6 +49,9 @@ De virtual machine moet voldoen aan alle MXE's requirements, anders gaat het pro
     Betekenis: het update programma van ubuntu is nog aan het updaten.
     Oplossing: wacht tot alle updates klaar zijn, en voer het commando opnieuw uit.
 
+Verder installeren we python-mako via volgend commando
+> sudo apt-get install -y python-mako
+
 #### 2.1 Download
 Download de huidige versie van MXE via github.
 >git clone https://github.com/mxe/mxe.git
@@ -63,11 +66,7 @@ Nu we MXE gedownload hebben, gaan we deze builden. Geef volgend commando in. Het
     Betekenis: We zitten niet in de juiste map (mxe)
     Oplossing: Ga in de map mxe, en voer het commando opnieuw uit.
 
-    Error: 
-    Betekenis:
-    Oplossing: 
-
-Daarna voer je het volgende commando uit, ook dit commando nam een kwartiertje in beslag.
+Daarna voer je het volgende commando uit om QT te installeren, wat bij mij 2 uur in beslag nam.
 > make qtbase
 
 
@@ -153,4 +152,3 @@ Je programma runt nu op je Windows PC, het cross compileren is geslaagd!
 * https://mxe.cc/#requirements
 * https://itsfoss.com/could-not-get-lock-error/
 * https://github.com/google/or-tools/issues/380
-
