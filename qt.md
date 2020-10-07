@@ -1,16 +1,16 @@
 # Cross Development - QT
 ## Intro
-blablabla
+We gaan de testcase die we eerder gemaakt hebben met QT, cross compileren op een Linux machine, zodat we het kunnen runnen op een Windows PC. Ik heb gebruik gemaakt van een virtual machine waar Linux opstaat, omdat mijn PC zelf alleen Windows heeft. Het is aan te raden om voldoende schijfruimte te voorzien op je virtuele machine, minstens 50 GB, omdat MXE vrij veel plaats inneemt. 
+
 ## Gevolgde stappen
 ### 1. - Virtual Machine Linux aanmaken
-
-Maak een nieuwe VM aan, met 6144MB memory kom je normaal toe.
+Maak een nieuwe virtuele machine aan waar Linux opstaat. Mijn machine heeft ongeveer 6 GB RAM geheugen, en een dynamische schijfruimte van 80 GB. 
 
 ### 2. - MXE requirements en Download
-Volg de stappen van deze tutorial (https://mxe.cc/#tutorial ) om MXE correct te installeren op de VM.
+Volg de stappen van deze tutorial (https://mxe.cc/#tutorial ) om MXE correct te installeren op de virtuele machine.
 
 #### 2.1 Requirements
-De virtual machine moet voldoen aan alle MXE's requirements, anders gaat het programma niet werken. We moeten verschillende zaken nog installeren, naargelang wat er reeds op u systeem staat. Geef volgende code in om de requirements te installeren.
+De virtual machine moet voldoen aan alle MXE's requirements, anders gaat het programma niet werken. We moeten verschillende zaken nog installeren, naargelang wat er reeds op uw systeem staat. Geef volgende code in om de requirements te installeren.
 
 > apt-get install \
     autoconf \
@@ -59,7 +59,7 @@ Download de huidige versie van MXE via github.
 De stap 'System Wide Installation' van de tutorial slaan we over, aangezien we MXE in onze home directory willen installeren.
 
 ### 3. Build MXE
-Nu we MXE gedownload hebben, gaan we deze builden. Geef volgend commando in. Het uitvoeren van dit commando kan een tijdje duren, bij mij heeft het een 40tal minutjes geduurd.
+Nu we MXE gedownload hebben, gaan we deze builden. Geef volgend commando in. Het uitvoeren van dit commando kan een tijdje duren, bij mij heeft het een 40tal minuutjes geduurd.
 > make cc
 
     Error: No rule to make target 'cc'
@@ -90,7 +90,7 @@ Ga naar de map waar je testcase instaat, en voer het make commando uit
     
     Error: img 'clock' is not found in /res...
     Probleem: Bij het kopieren van de testcase is de inhoud van de /res folder niet mee gekopieerd. 
-    Oplossing: Selecteer de inhoud en sleep deze naar Linux.
+    Oplossing: Selecteer de inhoud en sleep deze naar Linux. Voer het commando opnieuw uit.
 
 De compilatie is nu voltooid!
 
@@ -123,8 +123,6 @@ De shared folder is nu aangemaakt, dit kan je ook zien bij de instellingen van j
 ![sharedfolder](/img/shared_folders.png)
 
 
-
-
 ### 7. Run je programma op Windows
 Ga op je Windows PC naar de locatie waar je de gedeelde map hebt aangemaakt. Nu zie je dat de inhoud van de map overeenkomt met de inhoud van de Linux map. Klik op 
 * app (naam van de map)
@@ -138,13 +136,16 @@ Je programma runt nu op je Windows PC, het cross compileren is geslaagd!
 
 
 ## Eventuele aanpassingen aan het concept
-
+Wanneer je werkt met een Linux of Unix systeem, is het belangrijk om te weten dat Unix case-sensitive is. Dit betekent dat een karakter in hoofdletters of kleine letters wel degelijk anders wordt geïnterpreteerd. Bij het typen van commando's moet je hier op letten, maar ook in je testcase. QT op Windows is namelijk niet hoofdlettergevoelig, maar QT op Unix wel. Zorg dus voor een consistent gebruik van hoofdletters en kleine letters.
 
 ## Link met theorieles
+?
 
+## Bevindingen
+De setup van MXE is op zich vrij simpel door de tutorial die je kan volgen, maar het neemt wel wat tijd in beslag. Het internet op school was niet sterk genoeg om alles binnen een realistische tijdspanne te downloaden, waardoor ik alles thuis heb moeten downloaden, en enkele uren verloren heb. En als je kleine zaken vergeet aan te passen, en je dan een commando laat runnen van een paar uur, is het frustrerend om uiteindelijk een foutmelding te krijgen. Hier heb ik wel wat tijd aan verloren, waardoor ik het minder aangenaam vond om hiermee te werken. Er was wel voldoende documentatie terug te vinden op het internet, alsook eventuele foutmeldingen. 
 
 ## Screenshots eindresultaat
-
+![result](/img/testcase_ex.png)
 
 ## Extra's 
 ### Gebruikte sites:
