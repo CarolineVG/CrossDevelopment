@@ -10,9 +10,12 @@ Als we Ionic gebruiken om te cross-compileren, moeten we eerst de testcase omzet
 
 ## Gevolgde stappen
 ### 1. Applicatie herschrijven naar Angular
-We starten met een nieuw Ionic project aan te maken. Open de terminal, en typ volgend commando in
->
-
+Eerst gaan we Ionic installerne op onze computer. Typ volgend commando in
+> npm install -g ionic
+Daarna gaan we een nieuw Ionic project aanmaken. Kies eerst je framework, wij kiezen hier voor Angular. Daarna kan je een starter template kiezen. 
+> ionic start projectTimer
+Kies een editor om je project mee te openen, en probeer het project te runnen. Zorg ervoor dat je in de juiste map zit.
+> ionic serve
 
 We maken gebruik van Capacitor, dit is .......
 Nu gaan we over de stappen die nodig zijn om de Ionic App te testen in een Android Emulator.
