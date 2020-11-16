@@ -1,9 +1,18 @@
 # Cross Development - Ionic
+
+verschillen tussen beide
+code kunnen hergebruiken of niet?
+wat heb je juist veranderd?
+
+
 ## Intro
-Als we Ionic gebruiken om te cross-compileren, moeten we eerst de testcase omzetten naar een webtaal. Aangezien ik voor QT de testapplicatie van de docent mocht gebruiken, herschrijf ik nu deze applicatie in Angular. 
+Als we Ionic gebruiken om te cross-compileren, moeten we eerst de testcase omzetten naar een webtaal. Aangezien ik voor QT de testapplicatie van de docent mocht gebruiken, herschrijf ik nu deze applicatie in Angular. Angular (dat gebaseerd is op typescript) heeft een heel andere syntax dan C. Daarom kunnen we jammer genoeg weinig code hergebruiken. De cirkel waar we visueel de tijd zien passeren, heb ik via css gemaakt, door 3 halve cirkels te gebruiken. Ik heb hier dus geen punten getekend van coordinaat naar coordinaat. Aangezien ik al wat ervaring heb met css en css animaties, verliep dit vlotjes.
 
 ## Gevolgde stappen
-### 1. - dlqsf
+### 1. Applicatie herschrijven naar Angular
+We starten met een nieuw Ionic project aan te maken. Open de terminal, en typ volgend commando in
+>
+
 
 We maken gebruik van Capacitor, dit is .......
 Nu gaan we over de stappen die nodig zijn om de Ionic App te testen in een Android Emulator.
