@@ -1,61 +1,107 @@
 # Cross Development - Ionic
-
-verschillen tussen beide
-code kunnen hergebruiken of niet?
-wat heb je juist veranderd?
-
-
 ## Intro
-Als we Ionic gebruiken om te cross-compileren, moeten we eerst de testcase omzetten naar een webtaal. Aangezien ik voor QT de testapplicatie van de docent mocht gebruiken, herschrijf ik nu deze applicatie in Angular. Angular (dat gebaseerd is op typescript) heeft een heel andere syntax dan C. Daarom kunnen we jammer genoeg weinig code hergebruiken. De cirkel waar we visueel de tijd zien passeren, heb ik via css gemaakt, door 3 halve cirkels te gebruiken. Ik heb hier dus geen punten getekend van coordinaat naar coordinaat. Aangezien ik al wat ervaring heb met css en css animaties, verliep dit vlotjes.
+Als we Ionic gebruiken om te cross-compileren, moeten we eerst de testcase omzetten naar een webtaal. Aangezien ik voor QT de testapplicatie van de docent mocht gebruiken, herschrijf ik nu deze applicatie in Angular. Angular (dat gebaseerd is op typescript) heeft een heel andere syntax dan C. Daarom kunnen we jammer genoeg weinig code hergebruiken. De cirkel waar we visueel de tijd zien passeren, heb ik via css gemaakt, door 3 halve cirkels te gebruiken. Aangezien ik al wat ervaring heb met css en css animatie, verliep dit vlotjes.
 
 ## Gevolgde stappen
 ### 1. Applicatie herschrijven naar Angular
-Eerst gaan we Ionic installerne op onze computer. Typ volgend commando in
+Eerst gaan we Ionic installeren op onze computer. Typ volgend commando in:
 > npm install -g ionic
-Daarna gaan we een nieuw Ionic project aanmaken. Kies eerst je framework, wij kiezen hier voor Angular. Daarna kan je een starter template kiezen. 
+
+Daarna gaan we een nieuw Ionic project aanmaken. Kies eerst je framework, wij kiezen hier voor Angular. Daarna kan je een starter template kiezen.
+
 > ionic start projectTimer
+
 Kies een editor om je project mee te openen, en probeer het project te runnen. Zorg ervoor dat je in de juiste map zit.
+
 > ionic serve
 
-We maken gebruik van Capacitor, dit is .......
-Nu gaan we over de stappen die nodig zijn om de Ionic App te testen in een Android Emulator.
-Zorg ervoor dat Android Studio geïnstalleerd is op je computer. Zo hebben we toegang tot het build systeem Gradle, de juiste SDK en een geschikt Android Virtual Device.
+Nu herschrijven we alle code in Typescript, zodat we een webapplicatie krijgen. Aan de hand van de Ionic documentatie (onderdeel Angular) kan je heel wat informatie terugvinden over de routing, de modules,... En via de UI Components documentatie vind je makkelijk terug welke ionic tags je best gebruikt. 
+
+Handige documentatie over het Ionic framework:
+* https://ionicframework.com/docs/angular/navigation
+* https://ionicframework.com/docs/components 
 
 
-Eventuele plugins toevoegen
-Capacitor maakt gebruik van plugins zodat de applicatie toegang heeft tot de native API. Zo kunnen we toegang krijgen tot het systeem, de camera, storage,...
-Voor de Timer Applicatie maak ik gebruik van de plugin Modals, om een alert te sturen wanneer de timer is afgelopen. 
 
-plugin testen in emulator (live reload)
 
-installeer eerst de dependancy
-npm install -g @ionic/cli native-run cordova-res
+### 2. Capacitor
+Nu gaan we over de stappen die nodig zijn om de Ionic App te testen in een Android Emulator. We maken gebruik van Capacitor, ontwikkeld door het Ionic team, en uitgekomen in april 2020. Capacitor is een native runtime voor hybride applicaties. Een hybride app is een webapp die we via een wrapper op andere platformen kunnen gebruiken, zoals Android of iOS. Wij gebruiken dus Capacitor als 'wrapper', aangezien dit ook door Ionic ontwikkeld is.
 
-kijk na of je een @capacitor map hebt in node_modules
-indien niet: voeg toe via volgend commando: ionic integrations enable capacitor
+Wij gaan de applicatie runnen op een Android smartphone. Zorg ervoor dat Android Studio geïnstalleerd is op je computer. Zo hebben we toegang tot het build systeem Gradle, de juiste SDK en een geschikt Android Virtual Device.
 
-doe een build
-ionic build
+### 3. Plugins toevoegen 
+Capacitor maakt gebruik van plugins zodat de applicatie toegang heeft tot de native API. Zo kunnen we toegang krijgen tot het systeem, de camera, storage,... Capacitor heeft zelf een hele lijst van officiële plugins, die kan je terugvinden via volgende link: https://capacitorjs.com/docs/apis . Je kan ook zelf een custom plugin schrijven.
 
-start de live reload sessie op
-ionic cap run android -l --external
+Voor de Timer Applicatie heb ik gebruik gemaakt van de plugin Modals, om een alert te tonen wanneer de timer is afgelopen.
+Om de kleuren van de cirkel op te slaan, gebruik ik de plugin Storage. Zo blijven de gekozen kleuren behouden, ook na het afsluiten van de applicatie.
 
-Android wordt opgestart
-AndroidManifest aanpassen: de development server gebruikt geen https maar http. Android heeft hier problemen mee vanaf API level 28 of hoger. In de manifest laten we http toe via volgende code
-<application
-  android:usesCleartextTraffic="true"
->
+(voorbeeld plugin code)
 
+
+### 4. Plugins testen
+Onze applicatie heeft nu alle nodige functionaliteit, het is tijd om deze te testen in een emulator. Volg hiervoor volgende stappen:
+
+#### 4.1 Installeer de dependancy
+> npm install -g @ionic/cli native-run cordova-res
+
+#### 4.2 Voeg een @capacitor map toe
+Kijk na of je een @capacitor map hebt staan in je node_modules map. Indien dit niet het geval is, voeg deze dan toe via volgend commando:
+> ionic integrations enable capacitor
+
+#### 4.3 Build de applicatie
+> ionic build
+
+#### 4.4 Start de live reload sessie op
+> ionic cap run android -l --external
+
+Selecteer een IP address in de lijst. Android wordt nu opgestart, dit kan een vijftal minuutjes duren.
+
+    Error: This version of Android Studio cannot open this project, please retry with Android Studio 3.6 or newer
+    Betekenis: Update je Android Studio
+    Oplossing: Controleer de updates in Android Studio, en voer deze uit. Build daarna opnieuw de applicatie.
+
+(foto)
+
+#### 4.5 Bewerk de Androind Manifest file
+De development server waar we onze app op runnen, gebruikt geen https maar http. Hierdoor wordt die door Android (vanaf API level 28 of hoger) als onveilig gezien, en moeten we dit specifiek toelaten in het manifest. Pas volgende code aan:
+> <application android:usesCleartextTraffic="true"
+
+Nu kan je de applicatie runnen op een Android emulator, en alle functionaliteiten testen.
+
+    Error: io.ionic.starter E/Capacitor: Unable to read file at path public/plugins.
+    Betekenis: Het path naar public/plugins kan niet gelezen worden.
+    Oplossing: Download en update API 27.
+
+Probeer de applicatie opnieuw te runnen.
+
+    Error: Installation did not succeed. The application could not be installed. 
+    Betekenis: De installatie is niet gelukt.
+    Oplossing: Installeer en update volgende SDK Tools: Android SDK Build-Tools, Android Emulator, Android SDK Platform-Tools en Android SDK Tools. 
+
+Run de applicatie opnieuw, deze keer zou het moeten werken.
+(foto)
+
+### 5 Deployment
+dia 17: todo
 
 
 ## Eventuele aanpassingen aan het concept
-
+veranderingen beschrijven. Welke code enzo, wat is het belangrijkste dat je hebt aangepast?
 
 ## Link met theorieles
 
 
 ## Screenshots eindresultaat
-
+(foto)
 
 ## Extra's 
 ### Gebruikte sites:
+https://ionicframework.com/docs/angular/navigation
+
+https://ionicframework.com/docs/components
+
+https://www.w3schools.com/css/css3_animations.asp
+
+https://developer.android.com/studio/intro/update
+
+https://capacitorjs.com/docs/apis 
