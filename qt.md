@@ -86,7 +86,7 @@ Kopieer eerst je testcase die je wil cross-compileren naar je Linux machine.
     Oplossing: Selecteer de inhoud en sleep deze naar Linux.
     
 Ga naar de map waar je testcase instaat, en voer het make commando uit
-> /home/caroline/mxe/usr/i686-w64-mingw32.static/qt5/bin/qmake
+> /home/caroline/mxe/usr/i686-w64-mingw32.static/qt5/bin/qmake make
     
     Error: img 'clock' is not found in /res...
     Probleem: Bij het kopieren van de testcase is de inhoud van de /res folder niet mee gekopieerd. 
