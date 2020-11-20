@@ -83,6 +83,21 @@ Run de applicatie opnieuw, deze keer zou het moeten werken.
 
 ### 5 Deployment
 dia 17: todo
+Nu we de applicatie getest hebben, kunnen we deze gaan deployen. Open opnieuw de manifest file in Android Studio, en zet usesCleartextTraffic op false.
+> <application android:usesCleartextTraffic="false"
+
+Build daarna opnieuw je ionic applicatie. en kopieer deze op de juiste plaats.
+> ionic build
+
+Wanneer de webcode gebuild is, moeten we het kopiëren naar een native project. Elke keer als je iets in je code hebt veranderd en hebt gebuild, moet je dit commando uitvoeren.
+> ionic cap copy
+
+Open daarna Android Studio via volgend commando:
+> ionic cap run android
+
+Nu kunnen we onze applicatie runnen, en hebben we een hybride app ontwikkeld!
+
+
 
 
 ## Eventuele aanpassingen aan het concept
