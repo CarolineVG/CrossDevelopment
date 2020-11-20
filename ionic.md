@@ -82,7 +82,6 @@ Run de applicatie opnieuw, deze keer zou het moeten werken.
 (foto)
 
 ### 5 Deployment
-dia 17: todo
 Nu we de applicatie getest hebben, kunnen we deze gaan deployen. Open opnieuw de manifest file in Android Studio, en zet usesCleartextTraffic op false.
 > <application android:usesCleartextTraffic="false"
 
