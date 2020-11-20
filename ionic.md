@@ -102,6 +102,15 @@ Nu kunnen we onze applicatie runnen, en hebben we een hybride app ontwikkeld!
 ## Eventuele aanpassingen aan het concept
 veranderingen beschrijven. Welke code enzo, wat is het belangrijkste dat je hebt aangepast?
 
+cirkel tekenen: QT via paintEvent, met coordinaten, setBrush, drawRect
+Ionic: via CSS 3 halve cirkels getekend, en via animatie dingen verborgen/zichtbaar gemaakt
+
+colorwidget: QT ook via paintevent
+Ionic: via html is er reeds een basis color picker, hier hebben we extra code aan toegevoegd om de waardes op te slaan in de local storage
+
+qt: zelf vensters tekenen
+ionic: pagina's in html, css -> via tags buttons toevoegen, makkelijk layout aanpassen
+
 ## Link met theorieles
 
 
