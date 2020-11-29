@@ -1,6 +1,6 @@
 # Cross Development - Ionic
 ## Intro
-Als we Ionic gebruiken om te cross-compileren, moeten we eerst de testcase omzetten naar een webtaal. Aangezien ik voor QT de testapplicatie van de docent mocht gebruiken, herschrijf ik nu deze applicatie in Angular. Angular (dat gebaseerd is op typescript) heeft een heel andere syntax dan C. Daarom kunnen we jammer genoeg weinig code hergebruiken. De cirkel waar we visueel de tijd zien passeren, heb ik via css gemaakt, door 3 halve cirkels te gebruiken. Aangezien ik al wat ervaring heb met css en css animatie, verliep dit vlotjes.
+Als we Ionic gebruiken om te cross-compileren, moeten we eerst de testcase omzetten naar een webtaal. Aangezien ik voor QT de testapplicatie van de docent mocht gebruiken, herschrijf ik nu deze applicatie in Angular. Angular (dat gebaseerd is op typescript) heeft een heel andere syntax dan C. Daarom kunnen we jammer genoeg weinig code hergebruiken. 
 
 ## Gevolgde stappen
 ### 1. Applicatie herschrijven naar Angular
@@ -10,6 +10,8 @@ Eerst gaan we Ionic installeren op onze computer. Typ volgend commando in:
 Daarna gaan we een nieuw Ionic project aanmaken. Kies eerst je framework, wij kiezen hier voor Angular. Daarna kan je een starter template kiezen.
 
 > ionic start projectTimer
+
+![installation](img/install_ionic.png)
 
 Kies een editor om je project mee te openen, en probeer het project te runnen. Zorg ervoor dat je in de juiste map zit.
 
@@ -21,11 +23,13 @@ Handige documentatie over het Ionic framework:
 * https://ionicframework.com/docs/angular/navigation
 * https://ionicframework.com/docs/components 
 
+Via de localhost kunnen we ons project bekijken.
 
+![testcase](img/localhost_testcase.png)
 
 
 ### 2. Capacitor
-Nu gaan we over de stappen die nodig zijn om de Ionic App te testen in een Android Emulator. We maken gebruik van Capacitor, ontwikkeld door het Ionic team, en uitgekomen in april 2020. Capacitor is een native runtime voor hybride applicaties. Een hybride app is een webapp die we via een wrapper op andere platformen kunnen gebruiken, zoals Android of iOS. Wij gebruiken dus Capacitor als 'wrapper', aangezien dit ook door Ionic ontwikkeld is.
+Nu gaan we over de stappen die nodig zijn om de Ionic App te testen in een Android Emulator. We maken gebruik van Capacitor, dat gereleased is in april 2020. Capacitor is een native runtime voor hybride applicaties. Een hybride app is een webapp die we via een wrapper op andere platformen kunnen gebruiken, zoals Android of iOS. Wij gebruiken dus Capacitor als 'wrapper', aangezien dit ook door Ionic ontwikkeld is.
 
 Wij gaan de applicatie runnen op een Android smartphone. Zorg ervoor dat Android Studio geïnstalleerd is op je computer. Zo hebben we toegang tot het build systeem Gradle, de juiste SDK en een geschikt Android Virtual Device.
 
@@ -35,11 +39,13 @@ Capacitor maakt gebruik van plugins zodat de applicatie toegang heeft tot de nat
 Voor de Timer Applicatie heb ik gebruik gemaakt van de plugin Modals, om een alert te tonen wanneer de timer is afgelopen.
 Om de kleuren van de cirkel op te slaan, gebruik ik de plugin Storage. Zo blijven de gekozen kleuren behouden, ook na het afsluiten van de applicatie.
 
-(voorbeeld plugin code)
+
+![code](img/ionic_storage_service.png)
+![code](img/ionic_settings_storage.png)
 
 
 ### 4. Plugins testen
-Onze applicatie heeft nu alle nodige functionaliteit, het is tijd om deze te testen in een emulator. Volg hiervoor volgende stappen:
+Onze applicatie heeft nu alle nodige functionaliteiten, het is tijd om deze te testen in een emulator. Volg hiervoor volgende stappen:
 
 #### 4.1 Installeer de dependancy
 > npm install -g @ionic/cli native-run cordova-res
@@ -54,13 +60,13 @@ Kijk na of je een @capacitor map hebt staan in je node_modules map. Indien dit n
 #### 4.4 Start de live reload sessie op
 > ionic cap run android -l --external
 
-Selecteer een IP address in de lijst. Android wordt nu opgestart, dit kan een vijftal minuutjes duren.
+Selecteer een IP adres in de lijst. Android wordt nu opgestart, dit kan een vijftal minuutjes duren.
 
     Error: This version of Android Studio cannot open this project, please retry with Android Studio 3.6 or newer
     Betekenis: Update je Android Studio
     Oplossing: Controleer de updates in Android Studio, en voer deze uit. Build daarna opnieuw de applicatie.
 
-(foto)
+![android studio](img/android_studio_update.png)
 
 #### 4.5 Bewerk de Androind Manifest file
 De development server waar we onze app op runnen, gebruikt geen https maar http. Hierdoor wordt die door Android (vanaf API level 28 of hoger) als onveilig gezien, en moeten we dit specifiek toelaten in het manifest. Pas volgende code aan:
@@ -78,8 +84,9 @@ Probeer de applicatie opnieuw te runnen.
     Betekenis: De installatie is niet gelukt.
     Oplossing: Installeer en update volgende SDK Tools: Android SDK Build-Tools, Android Emulator, Android SDK Platform-Tools en Android SDK Tools. 
 
+![android studio](img/android_sdk_tools.png)
+
 Run de applicatie opnieuw, deze keer zou het moeten werken.
-(foto)
 
 ### 5 Deployment
 Nu we de applicatie getest hebben, kunnen we deze gaan deployen. Open opnieuw de manifest file in Android Studio, en zet usesCleartextTraffic op false.
@@ -96,26 +103,27 @@ Open daarna Android Studio via volgend commando:
 
 Nu kunnen we onze applicatie runnen, en hebben we een hybride app ontwikkeld!
 
+![eindresultaat](img/ionic_resultaat_testcase.png)
 
-
-
-## Eventuele aanpassingen aan het concept
-veranderingen beschrijven. Welke code enzo, wat is het belangrijkste dat je hebt aangepast?
-
-cirkel tekenen: QT via paintEvent, met coordinaten, setBrush, drawRect
-Ionic: via CSS 3 halve cirkels getekend, en via animatie dingen verborgen/zichtbaar gemaakt
-
-colorwidget: QT ook via paintevent
-Ionic: via html is er reeds een basis color picker, hier hebben we extra code aan toegevoegd om de waardes op te slaan in de local storage
-
-qt: zelf vensters tekenen
-ionic: pagina's in html, css -> via tags buttons toevoegen, makkelijk layout aanpassen
+## Veranderingen in de code
+Aangezien we de code van C naar Angular (Typescript) omzetten, kunnen we weinig code hergebruiken. De belangrijkste verandering is het tekenen van de cirkel. Bij het tekenen van de cirkel, waar we visueel de tijd zien passeren, gebruikten we in C het paintEvent. Daar werkten we met coördinaten en functies zoals setBrush en drawRect. In Angular heb ik besloten om de cirkel te tekenen via css en css animaties. Aangezien ik al wat ervaring heb met css animaties, was dit voor mij de meest logische keuze. Ik heb 3 halve cirkels gebruikt, via de visibility de cirkels (on)zichtbaar gemaakt, en ze dan geanimeerd met keyframes. Het eindresultaat is uiteindelijk hetzelfde als in C. 
 
 ## Link met theorieles
+TODO OOOOOOOOOOOOOOOOOOOOOOOOOOO
+(vb: welk is het build systeem van mxe of uw qt-testcase, Hoe secure is uw Electron applicatie, ...)
+
+
+## Conclusie
+goede documentatie vna ionic
+
+ondanks dat capacitor heel nieuw is, ook voldoende documentatie over te vinden
+
+aangenaam om mee te werken, aangezien ik vertrouwd ben met webtalen.
+
 
 
 ## Screenshots eindresultaat
-(foto)
+![eindresultaat](img/ionic_resultaat_testcase.png)
 
 ## Extra's 
 ### Gebruikte sites:
