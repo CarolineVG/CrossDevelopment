@@ -219,8 +219,8 @@ Capacitor maakt gebruik van plugins zodat de applicatie toegang heeft tot de nat
 Voor de Timer Applicatie heb ik gebruik gemaakt van de plugin Modals, om een alert te tonen wanneer de timer is afgelopen.
 Om de kleuren van de cirkel op te slaan, gebruik ik de plugin Storage. Zo blijven de gekozen kleuren behouden, ook na het afsluiten van de applicatie.
 
-
 ![code](img/ionic_storage_service.png)
+
 ![code](img/ionic_settings_storage.png)
 
 
@@ -540,9 +540,12 @@ In het hoofdstuk 'Security' worden de veiligheidregels gezien in de les toegepas
 
 ## Screenshots eindresultaat
 
+
 ![endresult](img/electron_eindresultaat_settings.PNG)
 
+
 ![endresult](img/electron_eindresultaat_timer.PNG)
+
 
 ![endresult](img/electron_eindresultaat_finished.PNG)
 
