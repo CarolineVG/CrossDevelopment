@@ -537,10 +537,6 @@ Indien je de remote module toch nodig hebt, kan je deze niet uitschakelen. De gl
 ### 17. Use a current version of Electron
 Tot slot is het aangeraden om een recente versie van Electron te gebruiken. Een applicatie met een oudere versie is namelijk een makkelijker target voor hackers. De security issues en exploits van de vorige versies van Chromium en Node.js zijn ook weggewerkt in de recente versies.
 
-TODO 
-
-
-TODO: ERROR ALS IK DIT DOE EIGEN LOADER MAKEN??
 
 ## Eventuele aanpassingen aan het concept
 Er zijn geen aanpassingen aan het concept, de code van Ionic heb ik volledig kunnen hergebruiken, en dan extra zaken zoals IPC en NodeJS API call toegevoegd. De titel in de html file heb ik uiteraard wel veranderd van Ionic naar Electron.
@@ -565,59 +561,34 @@ In het hoofdstuk 'Security' worden de veiligheidregels gezien in de les toegepas
 * https://www.electronjs.org/docs/api
 * https://www.electronjs.org/docs/tutorial/notifications
 
-
-
 <a name="samenvatting"></a>
 # Samenvatting
-## Vergelijking (nog een tabel maken)
-### Ontwikkeltijd
-QT
-* VM opzetten en XME klaarzetten: +- 3u
-* compileren zelf: 10min
+## Vergelijking
 
-Ionic
-* Angular applicatie opzetten: 5min
-* Code herschrijven naar webtaal (2uur) ??
-* Angular applicatie builden: 3min
-* (Android Studio was reeds geïnstalleerd, anders zou dit ook extra tijd hebben ingenomen)
-* Android Studio problemen oplossen (2uur)
-* Deployment (5min)
-
-Electron:
-* project starten: 60min (errors)
-* code kopieren: 10min
-* aanpassingen concept: 120+ (veel tijd verloren met errors in node modules) + weinig documentatie over IPC
-* api call uitvoeren:
-
-GOOGLE TRENDS GEBRUIKEN
+![tabel](img/vergelijkingskader.PNG)
 
 ### Toegankelijkheid
-QT: toegankelijk
+Qua toegankelijkheid vind ik Ionic en Electron toegankelijker dan QT. Er zijn immers meer programmeurs die webtalen kennen, dan een native taal zoals C++.
 
-Ionic: meer toegankelijk, er zijn meer programmeurs die webtalen kennen dan C of C++.
+### Ontwikkeltijd
+De ontwikkeltijd bij Ionic was bij mij het kleinst, dit komt omdat ik veel ervaring heb met webtalen en daardoor het project snel kon herschrijven. Het builden zelf duurde ongeveer 3 minuutjes, en de deployment 5 minuten. Ik had wel enkele problemen met Android Studio, maar aangezien deze als een emulator dient heb ik de besteden tijd hieraan niet meegeteld.
 
-Electron:
+Bij het ontwikkelen van het project in QT heb ik veel tijd verloren bij het builden van MXE (40 minuten) en het make commando om QT te installeren (120 minuten).
 
-### Hardware
-QT:
+Het project in Electron ontwikkelen duurde ook langer dan verwacht. Dit komt omdat bij het maken van het project niet alle dependencies geïnstalleerd waren, en ik dit pas later door had, waardoor ik opnieuw ben moeten beginnen. Ik denk wel dat met de opgedane ervaring de ontwikkeltijd van een volgend Electron project sterk zal dalen.
 
-Ionic:
+### Toegang tot hardware
+Bij het gebruik van C++ en QT heb je automatisch toegang tot de native functies van de hardware, terwijl we bij Ionic en Electron hiervoor extra plugins moeten gebruiken. Een nadeel van die plugins is dat die vendor-afhankelijk zijn, als er dus een nieuwe smartphone uitkomt met nieuwe native functionaliteiten, zijn er nog geen plugins voor gemaakt, en moeten we hiervoor nog een tijdje wachten eer we deze kunnen gebruiken.
 
-Electron:
 
 ### Security
-QT:
-
-Ionic:
-
-Electron:
-    veel security issues
-    sinds de nieuwere versies zijn enkele functies al default uitgeschakeld, waardoor het iets veiliger is
-
+In de lessen hebben we vooral bij Electron stilgestaan bij de security. Aangezien Electron buiten de sandbox gaat van de Chromium Architecture, zijn er veel security problemen. Bij Ionic zijn er enkele security problemen, zoals bijvoorbeeld bij de user input, omdat er gebruik wordt gemaakt van webtalen. Het is dus belangrijk om de user input altijd te controleren zodat er geen Cross Site Scripting attack kan plaatsvinden.
 
 ### Performantie
-QT:
+Bij het maken van een applicatie met C++ en QT kan je rekenen op een goede performantie. Dit is dan ook geschikt voor zware toepassingen. Bij Ionic vormt dit echter een probleem, aangezien hij rendert via de browser is dit platform niet geschikt voor zwaardere toepassingen. Over de performantie van Electron is iets minder bekend, maar aangezien hij ook via het web werkt, denk ik dat de performantie lager ligt dan bij QT.
 
-Ionic:
+### Documentatie
+Bij zowel QT en Ionic was er voldoende documentatie online te vinden. Ze hebben ook een sterk uitgebouwde community, waardoor je veel foutmeldingen online kan terugvinden. Dit was helaas niet het geval bij Electron, omdat het nog in zijn kinderschoenen staat. Hopelijk is er in de toekomst meer documentatie hiervoor beschikbaar.
 
-Electron:
+## Conclusie
+In dit project hebben we 3 manieren uitgeprobeerd om te cross-compileren, en mijn persoonlijke keuze is om te werken met Ionic. Ik ben zelf vertrouwd met webtalen, en vind het altijd moeilijk om een goede User Interface te ontwerpen, dus dan komen de ingebouwde UI components goed van pas. Bij Electron vind ik de security problemen en het gebrek aan documentatie een groot nadeel. Een voordeel van QT vind ik dat je de hardware direct kan aanspreken, zonder gebruik te moeten maken van plugins. Ik denk wel dat Hybride apps de toekomst zijn, aangezien de developerkost veel lager ligt, en je het kan ontwikkelen voor meerdere platformen.
