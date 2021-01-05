@@ -363,7 +363,7 @@ Een Electron project bestaat uit 2 types processen: het main proces en het rende
 
 Via het menu 'opties' kan de user zelf een eigen sound kiezen, die afgespeeld wordt als de timer klaar is. Om dit te implementeren in het project, maken we gebruik van een Dialog, om de gekozen sound te tonen aan de user. Normaal zou dit zonder problemen moeten werken, maar ik had hier wel wat problemen mee.
 
-![menu](img/electron_menu.PNG)
+![menu](img/electron_menu.png)
 
     Error: The target entry-point ngx-electron has missing dependencies: @angular/core
     Betekenis: Er is een dependency niet geïnstalleerd bij de installatie van ngx-electron
@@ -409,7 +409,7 @@ Nu kunnen we het project builden.
 
 Het builden is gelukt! Open het project openen via /electron/out/projectTimer-win32-x64/projectTimer.exe
 
-![endresult](img/electron_eindresultaat_settings.PNG)
+![endresult](img/electron_eindresultaat_settings.png)
 
 
 ## Security
@@ -540,14 +540,11 @@ In het hoofdstuk 'Security' worden de veiligheidregels gezien in de les toegepas
 
 ## Screenshots eindresultaat
 
+![endresult](img/electron_eindresultaat_settings.png)
 
-![endresult](img/electron_eindresultaat_settings.PNG)
+![endresult](img/electron_eindresultaat_timer.png)
 
-
-![endresult](img/electron_eindresultaat_timer.PNG)
-
-
-![endresult](img/electron_eindresultaat_finished.PNG)
+![endresult](img/electron_eindresultaat_finished.png)
 
 ## Extra's 
 ### Gebruikte sites:
