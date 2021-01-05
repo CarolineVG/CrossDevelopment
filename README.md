@@ -219,9 +219,9 @@ Capacitor maakt gebruik van plugins zodat de applicatie toegang heeft tot de nat
 Voor de Timer Applicatie heb ik gebruik gemaakt van de plugin Modals, om een alert te tonen wanneer de timer is afgelopen.
 Om de kleuren van de cirkel op te slaan, gebruik ik de plugin Storage. Zo blijven de gekozen kleuren behouden, ook na het afsluiten van de applicatie.
 
-![code](img/ionic_storage_service.png)
+![code](img/ionic_storage_service.PNG)
 
-![code](img/ionic_settings_storage.png)
+![code](img/ionic_settings_storage.PNG)
 
 
 ### 4. Plugins testen
@@ -283,7 +283,7 @@ Open daarna Android Studio via volgend commando:
 
 Nu kunnen we onze applicatie runnen, en hebben we een hybride app ontwikkeld.
 
-![eindresultaat](img/ionic_resultaat_testcase.png)
+![eindresultaat](img/ionic_resultaat_testcase.PNG)
 
 ## Veranderingen in de code
 Aangezien we de code van C naar Angular (Typescript) omzetten, kunnen we weinig code hergebruiken. De belangrijkste verandering is het tekenen van de cirkel. Bij het tekenen van de cirkel, waar we visueel de tijd zien passeren, gebruikten we in C het paintEvent. Daar werkten we met coördinaten en functies zoals setBrush en drawRect. In Angular heb ik besloten om de cirkel te tekenen via css en css animaties. Aangezien ik al wat ervaring heb met css animaties, was dit voor mij de meest logische keuze. Ik heb 3 halve cirkels gebruikt, via de visibility property de cirkels (on)zichtbaar gemaakt, en ze dan geanimeerd met keyframes. Het eindresultaat is uiteindelijk hetzelfde als in C.
@@ -295,7 +295,7 @@ In de les hebben we Capacitor besproken, dit ga ik dan ook gebruiken in het proj
 Ionic vind ik zeer aangenaam om mee te werken, aangezien ik vertrouwd ben met webtalen. De drempel om hiermee een app te maken ligt hierdoor lager dan bij QT. Er is ook voldoende documentatie over Ionic, en ondanks dat Capacitor nog redelijk nieuw is, is er ook hier voldoende documentatie over terug te vinden. Het builden van de applicatie ging over het algemeen vlot, ik had wel wat problemen met Android Studio, en daarom duurde het langer, maar met Ionic zelf had ik weinig problemen.
 
 ## Screenshots eindresultaat
-![eindresultaat](img/ionic_resultaat_testcase.png)
+![eindresultaat](img/ionic_resultaat_testcase.PNG)
 
 ## Extra's 
 ### Gebruikte sites:
