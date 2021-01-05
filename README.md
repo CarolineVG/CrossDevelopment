@@ -1,7 +1,7 @@
 # Cross Development - Verslag
 Auteur: Caroline Van Gossum
 
-Datum: 27 december 2020
+Datum: 5 januari 2021
 
 # Inhoud
 1. [ Testcase ](#testcase)
@@ -160,8 +160,7 @@ Je programma runt nu op je Windows PC, het cross compileren is geslaagd!
 Wanneer je werkt met een Linux of Unix systeem, is het belangrijk om te weten dat Unix case-sensitive is. Dit betekent dat een karakter in hoofdletters of kleine letters wel degelijk anders wordt geïnterpreteerd. Bij het typen van commando's moet je hier op letten, maar ook in je testcase. QT op Windows is namelijk niet hoofdlettergevoelig, maar QT op Unix wel. Zorg dus voor een consistent gebruik van hoofdletters en kleine letters.
 
 ## Link met theorieles
-TODO OOOOOOOOOOOOOOOOOOOOOOOOOOO
-(vb: welk is het build systeem van mxe of uw qt-testcase, Hoe secure is uw Electron applicatie, ...)
+In de les hebben we verschillende build systemen bekeken, zoals GNU Autotools, CMake, PreMake en SCONS. Omdat we in dit project met QT werken, maken we gebruik van de qmake tool om ons project te builden. qmake genereert automatisch de Makefiles, zodat we alleen nog het make commando moeten uitvoeren om ons project te builden.
 
 ## Conclusie
 De setup van MXE is op zich vrij simpel door de tutorial die je kan volgen, maar het neemt wel wat tijd in beslag. Het internet op school was niet sterk genoeg om alles binnen een realistische tijdspanne te downloaden, waardoor ik alles thuis heb moeten downloaden, en enkele uren verloren heb. En als je kleine zaken vergeet aan te passen, en je dan een commando laat runnen van een paar uur, is het frustrerend om uiteindelijk een foutmelding te krijgen. Hier heb ik wel wat tijd aan verloren, waardoor ik het minder aangenaam vond om hiermee te werken. Er was wel voldoende documentatie terug te vinden op het internet, alsook eventuele foutmeldingen.
@@ -175,6 +174,7 @@ De setup van MXE is op zich vrij simpel door de tutorial die je kan volgen, maar
 * https://mxe.cc/#requirements
 * https://itsfoss.com/could-not-get-lock-error/
 * https://github.com/google/or-tools/issues/380
+* https://doc.qt.io/qt-5/qmake-manual.html
 
 
 <a name="ionic"></a>
@@ -289,9 +289,9 @@ Nu kunnen we onze applicatie runnen, en hebben we een hybride app ontwikkeld.
 Aangezien we de code van C naar Angular (Typescript) omzetten, kunnen we weinig code hergebruiken. De belangrijkste verandering is het tekenen van de cirkel. Bij het tekenen van de cirkel, waar we visueel de tijd zien passeren, gebruikten we in C het paintEvent. Daar werkten we met coördinaten en functies zoals setBrush en drawRect. In Angular heb ik besloten om de cirkel te tekenen via css en css animaties. Aangezien ik al wat ervaring heb met css animaties, was dit voor mij de meest logische keuze. Ik heb 3 halve cirkels gebruikt, via de visibility property de cirkels (on)zichtbaar gemaakt, en ze dan geanimeerd met keyframes. Het eindresultaat is uiteindelijk hetzelfde als in C. 
 
 ## Link met theorieles
-TODO OOOOOOOOOOOOOOOOOOOOOOOOOOO
-(vb: welk is het build systeem van mxe of uw qt-testcase, Hoe secure is uw Electron applicatie, ...)
+capacitor bekeken in les, dit hier ook gebruiken 
 
+TODO OOOOOOOOOOOOOOOOOOOOOOOOOOO
 
 ## Conclusie
 Ionic vind ik zeer aangenaam om mee te werken, aangezien ik vertrouwd ben met webtalen. De drempel om hiermee een app te maken ligt hierdoor lager dan bij QT. Er is ook voldoende documentatie over Ionic, en ondanks dat Capacitor nog redelijk nieuw is, is er ook hier voldoende documentatie over terug te vinden. Het builden van de applicatie ging over het algemeen vlot, ik had wel wat problemen met Android Studio, en daarom duurde het langer, maar met Ionic zelf had ik weinig problemen.
@@ -301,21 +301,17 @@ Ionic vind ik zeer aangenaam om mee te werken, aangezien ik vertrouwd ben met we
 
 ## Extra's 
 ### Gebruikte sites:
-https://ionicframework.com/docs/angular/navigation
-
-https://ionicframework.com/docs/components
-
-https://www.w3schools.com/css/css3_animations.asp
-
-https://developer.android.com/studio/intro/update
-
-https://capacitorjs.com/docs/apis 
+* https://ionicframework.com/docs/angular/navigation
+* https://ionicframework.com/docs/components
+* https://www.w3schools.com/css/css3_animations.asp
+* https://developer.android.com/studio/intro/update
+* https://capacitorjs.com/docs/apis 
 
 
 <a name="electron"></a>
 # Electron
 ## Intro
-In dit hoofdstuk gaan we Electron gebruiken om onze testcase te cross-compileren. Electron is een framework waarmee we native desktop kunnen bouwen, via webtechnologie. De app kan daarna worden gepackaged zodat ze ook op Mac, Windows of Linux kunnen draaien. We kunnen een groot stuk code van Ionic hergebruiken, maar moeten wel opletten met enkele security issues. 
+In dit hoofdstuk gaan we Electron gebruiken om onze testcase te cross-compileren. Electron is een framework waarmee we native desktop kunnen bouwen, via webtechnologie. De app kan daarna worden gepackaged zodat ze ook op Mac, Windows of Linux kunnen draaien. We kunnen een groot stuk code van Ionic hergebruiken, maar moeten wel opletten met enkele security issues.
 
 ## Gevolgde stappen
 ### 1. Maak een nieuw Electron project
@@ -353,7 +349,7 @@ Voor we echter onze applicatie gaan aanpassen, gaan we er eerst voor zorgen dat 
 
 Aangezien het nogal omslachtig is om elke keer dit commando in te typen, voegen we dit toe als een script aan de package.json file.
 
-![eindresultaat](img/electron_packagejson.PNG)
+![electron package](img/electron_packagejson.PNG)
 
 Nu moeten we enkel nog het script uitvoeren na de aanpassingen:
 > npm run build_and_execute
@@ -362,14 +358,14 @@ Nu moeten we enkel nog het script uitvoeren na de aanpassingen:
 De code van Ionic heb ik kunnen overnemen voor Electron, hier heb ik dus weinig werk mee. Nu kan ik het project opnieuw builden en executen.
 
 
-![eindresultaat](img/electron_angular_build.PNG)
+![resultaat electron angular build](img/electron_angular_build.PNG)
 
 #### IPC communicatie
 Een Electron project bestaat uit 2 types processen: het main proces en het renderer proces. Om te communiceren tussen deze twee processen, gebruiken we IPC (InterProcessCommunicatie) om boodschappen te sturen.
 
-Via het menu 'opties' kan de user zelf een eigen sound kiezen, die afgespeeld wordt als de timer klaar is. Om dit te implementeren in het project, maken we gebruik van een Dialog. Normaal zou dit zonder problemen moeten werken, maar ik had hier wel wat problemen mee.
+Via het menu 'opties' kan de user zelf een eigen sound kiezen, die afgespeeld wordt als de timer klaar is. Om dit te implementeren in het project, maken we gebruik van een Dialog, om de gekozen sound te tonen aan de user. Normaal zou dit zonder problemen moeten werken, maar ik had hier wel wat problemen mee.
 
-![eindresultaat](img/electron_menu.PNG)
+![menu](img/electron_menu.PNG)
 
     Error: The target entry-point ngx-electron has missing dependencies: @angular/core
     Betekenis: Er is een dependency niet geïnstalleerd bij de installatie van ngx-electron
@@ -387,55 +383,63 @@ Via het menu 'opties' kan de user zelf een eigen sound kiezen, die afgespeeld wo
 
 Pas in de index.js file het submenu aan, zodat de user uit verschillende alarmopties kan kiezen. In de settings component wordt gecommuniceerd met het main process, en het renderer proces stuurt de juiste sound file door naar de Circle component. Daar wordt het geluid dan afgespeeld.
 
-![eindresultaat](img/electron_ipc.PNG)
-
-
 #### NodeJS API call
-Via de NodeJs API call heeft de user de mogelijkheid om een alarm te gebruiken van de Google Assistent Sound Library.
+Voor de NodeJS API call maak ik gebruik van de Notification plugin, zodat er op het systeem van de user (in mijn geval Windows) een notificatie tevoorschijn komt wanneer de user voor een ander alarmtoon kiest. Dit vervangt de Dialog functie die ik gebruikte in het renderer process. In het main proces (index.js) schrijven we de functie showNotification, met een titel en beschrijving. Bij het menu gebruiken we dan de functie om naargelang de gekozen sound de juiste notificatie te tonen.
 
+> Tip: Kijk na of notificaties toegestaan zijn op je Windows en of 'Focus Assist' uitstaat, anders worden de notificaties niet getoond.
 
+![main process](img/electron_ipc.PNG)
+
+Verder maken we ook nog een icon aan in 3 formaten, .ico (Windows), .icns (OS X) en .png (Linux). We zorgen er ook voor dat we geen wit laadscherm krijgen bij het opstarten van de app. 
+
+TODO
 
 ### 6. Electron Deployment
-Om ons Electron project te deployen, maken we gebruik van de tool electron-forge. 
+Om ons Electron project te deployen, maken we gebruik van de tool electron-forge.
 
-In het projecten hebben we 2 package.json files, 1 in de root van het project, en 1 in de electron folder. De file /electron/package.json gebruiken we voor het deployen, dus het is belangrijk om de volgende commando's op deze locatie uit te voeren. 
+In het projecten hebben we 2 package.json files, 1 in de root van het project, en 1 in de electron folder. De file /electron/package.json gebruiken we voor het deployen, dus het is belangrijk om de volgende commando's op deze locatie uit te voeren.
 
-Eerst gaan we electron-forge toevoegen aan ons project. Dit doen we via volgend commando
+Eerst gaan we electron-forge toevoegen aan ons project, dit kan enkele minuutjes duren. Dit doen we via volgend commando
 > npx @electron-forge/cli import
 
 Dit commando voegt nieuwe dependancy's toe aan de package.json file, installeert deze dependancy's en voegt de out map toe, dit is de map waar de output bestanden gegenereerd worden.
 
 Daarna gaan we het veld author toevoegen in de package.json file.
-(foto of code)
+
+```json
+"author": "Caroline Van Gossum",
+```
 
 Nu kunnen we het project builden.
 > npm run make
 
-dia 17 ?
+Het builden is gelukt! Open het project openen via /electron/out/projectTimer-win32-x64/projectTimer.exe
+
+![endresult](img/electron_eindresultaat_settings.PNG)
 
 
 ## Security
 In dit hoofdstuk bespreek ik enkele belangrijke security regels bij het gebruik van Electron, en pas ik ze toe op het project.
 
 ### 1. Only load secure content
-De app mag alleen veilige content laden, dus gebruiken we https in plaats van http. Https zorgt er onder andere voor dat de externe server geverifieerd wordt, zodat de app verbindnig maakt met de juiste host en geen imitator.
+De app mag alleen veilige content laden, dus gebruiken we https in plaats van http. Https zorgt er onder andere voor dat de externe server geverifieerd wordt, zodat de app verbinding maakt met de juiste host en geen imitator.
 
-TOEPASSING?
+In mijn project heb ik dit niet moeten toepassen, aangezien ik geen externe content inlaad.
 
 ### 2. Disable the Node.js integration in all renderers that display remote content
-We gaan de remote content minder rechten geven, zodat we XSS (cross-site-scripting) aanvallen voorkomen. Dit kan gevaarlijk zijn omdat de remote content dan uit het renderer proces kan komen, en malafide code kan uitvoeren op de computer van de gebruiker.
+Belangrijk is om de remote content minder rechten geven, zodat we XSS (cross-site-scripting) aanvallen voorkomen. Dit kan gevaarlijk zijn omdat de remote content dan uit het renderer proces kan komen, en malafide code kan uitvoeren op de computer van de gebruiker.
 
-TODO
+Aangezien ik in dit project geen remote content gebruik, moet ik dit hier niet toepassen.
 
 ### 3. Enable context isolation in all renderers that display remote content
-Door de context isolatie in te schakelen, wordt de code van scripts en Electron API's in een bepaalde JavaScript context gedraaid. Zo kunnen eventueel malafide scripts in het renderer proces hier geen aanpassingen aan maken. 
+Door de context isolatie in te schakelen, wordt de code van scripts en Electron API's in een bepaalde JavaScript context gedraaid. Zo kunnen eventueel malafide scripts in het renderer proces hier geen aanpassingen aan maken.
 
-TODO
+Aangezien ik in dit project geen remote content gebruik, moet ik dit hier niet toepassen.
 
 ### 4. Use ses.setPermissionRequestHandler() in all sessions that load remote content
 Eem permissie request krijg je regelmatig via Chrome, bijvoorbeeld als je Discord in de browser opent, gaat hij toegang vragen tot je camera en microfoon. Electron staat default alle permissies request toe, tenzij de developer dit manueel uitzet. Het wordt dan ook sterk aangeraden om de requests uit te schakelen. Dit kan je doen door een handler te ontwikkelen.
 
-TODO -> geen session gebruikt?
+Ik heb geen sessions gebruikt in mijn project, dus kan dit ook niet toepassen.
 
 ### 5. Do not disable webSecurity
 Bij het maken van een nieuwe BrowserWindow is Websecurity default ingeschakdeld door Electron. Als je dit echter uitschakelt, zet Electron de allowRunningInsecureCoontent op true, waardoor onveilige code van verschillende domains uitgevoerd kan worden.
@@ -454,7 +458,7 @@ mainWindow = new BrowserWindow({
 ### 6. Define a Content-Security-Policy and use restrictive rules (i.e. script-src 'self')
 De Content Security Policy is een extra beschermingslaag tegen Cross-Site-Scripting attacks en data injectie attacks. Deze beperkt het laden van scripts die de user zelf kan ingeven. Zo mogen bijvoorbeeld scripts van evil.attacker.com niet uitgevoerd worden.
 
-TODO -> geen session gebruikt?
+Ik heb geen sessions gebruikt in mijn project, dus kan dit ook niet toepassen.
 
 ### 7. Do not set allowRunningInsecureContent to true
 Als AllowRunningInsecureContent op false staat, mogen websites die geladen worden via https geen scripts, CSS of plugins uit onveilige bronnen uitvoeren. Default staat dit dan ook op false.
@@ -486,34 +490,33 @@ mainWindow = new BrowserWindow({
 Blink is de rendering machine die achter Chromium zit. Default zijn ook deze features uitgeschakeld, omdat je die als developer meestal niet nodig hebt. Indien je wel een feature hiervan wil gebruiken, kan je deze nog inschakelen.
 In dit project heb ik deze features niet nodig gehad.
 
-### 10. <webview>: Do not use allowpopups
+### 10. webview: Do not use allowpopups
 Via de webview kan je een nieuwe window creëren en openen. Als je project deze feature echter niet nodig heeft, moet je hem ook niet gebruiken, aangezien dit alleen maar extra security risico's geeft.
 
-TODO
-In dit project heb ik geen gebruik gemaakt van <webview>.
+In dit project heb ik geen gebruik gemaakt van webview.
 
-### 11. <webview>: Verify options and params
+### 11. webview: Verify options and params
 Een webview heeft een eigen onafhankelijk renderer proces met eigen webPreferences. Het is belangrijk om als je een webview gebruikt, de opties en parameters na te kijken. De webview leeft in de DOM, en kan aangemaakt worden om onveilige scripts te runnen op je website.
 
-TODO
-In dit project heb ik geen gebruik gemaakt van <webview>.
+In dit project heb ik geen gebruik gemaakt van webview.
 
 ### 12. Disable or limit navigation
 Indien je applicatie geen navigatie nodig heeft, is het beter om de navigatie uit te schakelen of te beperken. Navigatie wordt namelijk vaak gebruikt om aanvallen uit te voeren, als je applicatie immers van de huidige pagine weg navigeert, kan hij gedwongen worden om andere onveilige websites te openen op het internet.
 
-TODO
-HOE EN WAAR TOEVOEGEN??
+Ik heb in mijn project gebruik gemaakt van 3 routes:
+* ' ' -> settings
+* 'home' -> home
+* '**' -> redirect naar settings
 
 ### 13. Disable or limit creation of new windows
 Beperk ook het aanmaken van nieuwe of extra windows in je applicatie. WebContents worden namelijk voor gebruikt om aanvallen uit te voeren, zo kunnen ze nieuwe Windows aanmaken die meer priviliges hebben, en zo het main process binnendringen.
 
-TODO
-niet van toepassing??
+In mijn project wordt er slechts 1 browserwindow aangemaakt in de index.js file.
 
 ### 14. Do not use openExternal with untrusted content
 De openExternal functie van de shell kan URI's openen, maar een verkeerd gebruik hiervan kan de user's host hiervan in gevaar brengen. Gebruik deze functie dus niet met onveilige of niet-vertrouwde URI's.
 
-Geen gebruik gemaakt van 
+Aangezien ik geen gebruik heb gemaakt van de shell, is deze regel niet van toepassing.
 
 ### 15. Disable the remote module
 Als je remote module niet gebruikt, is het belangrijk om hem uit te schakelen. Anders hebben de renderer processen toegang to de API's die normaal alleen beschikbaar zijn in het main process. Malifide code kan zo uit de sandbox gaan en via het main process (die meer privileges heeft) toegang krijgen tot de systeem resources.
@@ -536,6 +539,9 @@ Tot slot is het aangeraden om een recente versie van Electron te gebruiken. Een 
 
 TODO 
 
+
+TODO: ERROR ALS IK DIT DOE EIGEN LOADER MAKEN??
+
 ## Eventuele aanpassingen aan het concept
 Er zijn geen aanpassingen aan het concept, de code van Ionic heb ik volledig kunnen hergebruiken, en dan extra zaken zoals IPC en NodeJS API call toegevoegd. De titel in de html file heb ik uiteraard wel veranderd van Ionic naar Electron.
 
@@ -544,18 +550,20 @@ In het hoofdstuk 'Security' worden de veiligheidregels gezien in de les toegepas
 
 ## Screenshots eindresultaat
 
+![endresult](img/electron_eindresultaat_settings.PNG)
+
+![endresult](img/electron_eindresultaat_timer.PNG)
+
+![endresult](img/electron_eindresultaat_finished.PNG)
 
 ## Extra's 
 ### Gebruikte sites:
-https://ionicframework.com/docs/cli 
-
-https://devdactic.com/ionic-desktop-electron/
-
-https://www.electronjs.org/docs/tutorial/security
-
-https://github.com/angular/angular-cli/issues/10681 
-
-
+* https://ionicframework.com/docs/cli 
+* https://devdactic.com/ionic-desktop-electron/
+* https://www.electronjs.org/docs/tutorial/security
+* https://github.com/angular/angular-cli/issues/10681 
+* https://www.electronjs.org/docs/api
+* https://www.electronjs.org/docs/tutorial/notifications
 
 
 
@@ -565,7 +573,7 @@ https://github.com/angular/angular-cli/issues/10681
 ### Ontwikkeltijd
 QT
 * VM opzetten en XME klaarzetten: +- 3u
-* compileren zelf: 10min 
+* compileren zelf: 10min
 
 Ionic
 * Angular applicatie opzetten: 5min
@@ -581,7 +589,7 @@ Electron:
 * aanpassingen concept: 120+ (veel tijd verloren met errors in node modules) + weinig documentatie over IPC
 * api call uitvoeren:
 
-
+GOOGLE TRENDS GEBRUIKEN
 
 ### Toegankelijkheid
 QT: toegankelijk
